@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='risk_management.css') }}"/>
+</head>
+<body>
+    <h1>Trade Risk Calculator</h1>
+    <form method="post" action="{{ url_for('risk_management') }}" id="risk_management_form">
+        <label for="TradeCapital">Total Trade Capital:</label>
+        <input type="text" name="TradeCapital" id="TradeCapital">
+        <br/>
+        <label for="BuyPrice">Stock Buy Price:</label>
+        <input type="BuyPrice" name="BuyPrice" id="BuyPrice">
+        <br/>
+        <label for="StopLossPrice">Stock StopLoss Price:</label>
+        <input type="StopLossPrice" name="StopLossPrice" id="StopLossPrice">
+        <br/>
+        <label for="Risk_Percentage">Risk%:</label>
+        <input type="Risk_Percentage" name="Risk_Percentage" id="Risk_Percentage">
+        <br/>
+        <input type="submit" value="Submit"/>
+        <input type="reset"  value="RESET" style="color: red;"/>
+    </form>
+    {% if calculation_success == True %}
+        <br/>
+        <p>Stop Loss Risk %: {{sl_risk}}</p>
+        <p>Position Risk Size: {{risk_size}}</p>
+        <p>Shares Buy: {{shares}}</p>
+        <p>Trade Value: {{shares_value}}</p>
+    {% endif %}
+    {% if calculation_success == False %}
+        <br/>
+        <p>{{error}}</p>
+        <p>{{input1}} {{operation}} {{input2}} = "{{result}}"</p>
+    {% endif %}
+</body>
+</html>
