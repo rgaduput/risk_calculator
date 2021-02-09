@@ -4,4 +4,4 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r /app/requirements.txt
 EXPOSE 5050
-CMD ["python", "main.py"]
+CMD ["python", "app.py"]

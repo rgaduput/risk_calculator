@@ -1,15 +1,15 @@
 from flask import Flask, render_template, request
 
-Flask_App = Flask(__name__)
+app = Flask(__name__)
 
 
-@Flask_App.route("/", methods=["GET"])
+@app.route("/", methods=["GET"])
 def index():
 
     return render_template("index.html")
 
 
-@Flask_App.route("/risk_management", methods=["POST"])
+@app.route("/risk_management", methods=["POST"])
 def risk_management():
     total_capital = float(request.form["TradeCapital"])
     buy_price = float(request.form["BuyPrice"])
@@ -32,4 +32,4 @@ def risk_management():
 
 
 if __name__ == "__main__":
-    Flask_App.run(host="0.0.0.0", port=5050, debug=True)
+    app.run()
